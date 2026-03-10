@@ -2,14 +2,13 @@
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
-<title>Для тебя ❄️</title>
-
+<title>Спокойной ночи ❄️</title>
 
 <style>
 body {
   margin: 0;
   height: 100vh;
-  background: linear-gradient(180deg, #87CEFA, #e6f7ff);
+  background: linear-gradient(180deg, #1b2a41, #324a5f);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -23,21 +22,43 @@ body {
   padding: 35px;
   border-radius: 20px;
   text-align: center;
-  box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+  box-shadow: 0 15px 40px rgba(0,0,0,0.25);
   max-width: 420px;
   width: 90%;
   position: relative;
+  z-index: 2;
 }
 
 h1 {
-  color: #0077cc;
+  color: #2c6fb7;
   margin-bottom: 15px;
 }
 
 p {
   font-size: 16px;
   color: #444;
-  line-height: 1.5;
+  line-height: 1.6;
+}
+
+/* горы */
+.mountains {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 200px;
+  background: linear-gradient(to top, #0d1b2a, transparent);
+  clip-path: polygon(
+    0% 100%, 
+    10% 70%, 
+    20% 90%, 
+    35% 60%, 
+    50% 85%, 
+    65% 55%, 
+    80% 80%, 
+    90% 65%, 
+    100% 100%
+  );
+  z-index: 1;
 }
 
 /* сердечки */
@@ -73,22 +94,32 @@ p {
     transform: translateY(110vh);
   }
 }
+
 </style>
 </head>
 
 <body>
 
 <div class="card" id="card">
-  <h1>Для тебя ⛷️❄️</h1>
+  <h1>Спокойной ночи ⛷️🌙</h1>
+
   <p>
-    Надеюсь, ты круто катаешься и получаешь максимум удовольствия 🏔️  
-    Просто маленькое напоминание из другой страны:
+    Надеюсь, ты отлично покатался сегодня  
+    и получил свою порцию гор, снега и адреналина ❄️
   </p>
 
   <p>
-    я думаю о тебе и жду, когда ты вернёшься 💙
+    Пусть тебе снятся красивые спуски,  
+    мягкий снег и идеальная погода в горах 🏔️
+  </p>
+
+  <p>
+    А я просто отправляю тебе немного тепла  
+    из другой страны 💙
   </p>
 </div>
+
+<div class="mountains"></div>
 
 <script>
 
@@ -108,7 +139,7 @@ function createSnowflake(){
 
 setInterval(createSnowflake,200);
 
-/* сердечки при клике */
+/* сердечки */
 const card = document.getElementById("card");
 
 card.addEventListener("click", () => {
