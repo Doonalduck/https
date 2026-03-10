@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>Для тебя ❄️</title>
+
+<style>
+body {
+  margin: 0;
+  height: 100vh;
+  background: linear-gradient(180deg, #87CEFA, #e6f7ff);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: Arial, sans-serif;
+  overflow: hidden;
+}
+
+/* карточка */
+.card {
+  background: white;
+  padding: 35px;
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+  max-width: 420px;
+  width: 90%;
+  position: relative;
+}
+
+h1 {
+  color: #0077cc;
+  margin-bottom: 15px;
+}
+
+p {
+  font-size: 16px;
+  color: #444;
+  line-height: 1.5;
+}
+
+/* сердечки */
+.heart {
+  position: absolute;
+  font-size: 20px;
+  animation: float 3s linear forwards;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-200px) scale(1.5);
+    opacity: 0;
+  }
+}
+
+/* снежинки */
+.snowflake {
+  position: fixed;
+  top: -10px;
+  color: white;
+  font-size: 12px;
+  opacity: 0.8;
+  animation: fall linear forwards;
+}
+
+@keyframes fall {
+  to {
+    transform: translateY(110vh);
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="card" id="card">
+  <h1>Для тебя ⛷️❄️</h1>
+  <p>
+    Надеюсь, ты круто катаешься и получаешь максимум удовольствия 🏔️  
+    Просто маленькое напоминание из другой страны:
+  </p>
+
+  <p>
+    я думаю о тебе и жду, когда ты вернёшься 💙
+  </p>
+</div>
+
+<script>
+
+/* снежинки */
+function createSnowflake(){
+  const snow = document.createElement("div");
+  snow.className = "snowflake";
+  snow.innerHTML = "❄";
+  snow.style.left = Math.random()*100 + "vw";
+  snow.style.animationDuration = 3 + Math.random()*5 + "s";
+  snow.style.fontSize = 10 + Math.random()*20 + "px";
+
+  document.body.appendChild(snow);
+
+  setTimeout(()=>snow.remove(),8000);
+}
+
+setInterval(createSnowflake,200);
+
+/* сердечки при клике */
+const card = document.getElementById("card");
+
+card.addEventListener("click", () => {
+  for(let i=0;i<8;i++){
+    const heart = document.createElement("div");
+    heart.className = "heart";
+    heart.innerHTML = "💙";
+
+    heart.style.left = (card.offsetWidth/2 + (Math.random()*80-40)) + "px";
+    heart.style.top = (card.offsetHeight/2) + "px";
+
+    card.appendChild(heart);
+
+    setTimeout(()=>heart.remove(),3000);
+  }
+});
+
+</script>
+
+</body>
+</html>
